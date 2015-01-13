@@ -7,8 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import <Parse/Parse.h>
-#import "PFFacebookUtils.h"
 
 @interface AppDelegate ()
 

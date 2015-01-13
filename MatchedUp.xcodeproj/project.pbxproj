@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7080104EA370D98E093C2982 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5280840961B0E58EE5223C9F /* libPods.a */; };
+		DD7CE0DE1A65C92700691BDD /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7CE0DD1A65C92700691BDD /* Constants.m */; };
 		DD9F99481A62D818005B4445 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9F99471A62D818005B4445 /* main.m */; };
 		DD9F994B1A62D818005B4445 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9F994A1A62D818005B4445 /* AppDelegate.m */; };
 		DD9F994E1A62D818005B4445 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9F994D1A62D818005B4445 /* FirstViewController.m */; };
@@ -33,6 +34,9 @@
 		5280840961B0E58EE5223C9F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		62698E773710A99E3454A039 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DC5E6D324B3C83220DACC12D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		DD7CE0DC1A65C92700691BDD /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		DD7CE0DD1A65C92700691BDD /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		DD7CE0DF1A65C97200691BDD /* MatchedUp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MatchedUp-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		DD9F99421A62D818005B4445 /* MatchedUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchedUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD9F99461A62D818005B4445 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD9F99471A62D818005B4445 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -111,6 +115,7 @@
 		DD9F99441A62D818005B4445 /* MatchedUp */ = {
 			isa = PBXGroup;
 			children = (
+				DD7CE0DF1A65C97200691BDD /* MatchedUp-Prefix.pch */,
 				DD9F99491A62D818005B4445 /* AppDelegate.h */,
 				DD9F994A1A62D818005B4445 /* AppDelegate.m */,
 				DD9F994C1A62D818005B4445 /* FirstViewController.h */,
@@ -132,6 +137,8 @@
 			children = (
 				DD9F99461A62D818005B4445 /* Info.plist */,
 				DD9F99471A62D818005B4445 /* main.m */,
+				DD7CE0DC1A65C92700691BDD /* Constants.h */,
+				DD7CE0DD1A65C92700691BDD /* Constants.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -293,6 +300,7 @@
 				DD9F99701A62D8AF005B4445 /* LogInViewController.m in Sources */,
 				DD9F994E1A62D818005B4445 /* FirstViewController.m in Sources */,
 				DD9F99481A62D818005B4445 /* main.m in Sources */,
+				DD7CE0DE1A65C92700691BDD /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +423,7 @@
 			baseConfigurationReference = DC5E6D324B3C83220DACC12D /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "MatchedUp-Prefix.pch";
 				INFOPLIST_FILE = MatchedUp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -426,6 +435,7 @@
 			baseConfigurationReference = 62698E773710A99E3454A039 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "MatchedUp-Prefix.pch";
 				INFOPLIST_FILE = MatchedUp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

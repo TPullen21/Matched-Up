@@ -7,7 +7,6 @@
 //
 
 #import "LogInViewController.h"
-#import "PFFacebookUtils.h"
 
 @interface LogInViewController ()
 
@@ -65,33 +64,41 @@
     [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
         if (!error) {
             NSDictionary *userDictionary = (NSDictionary *)result;
+            
+            // Create URL
+            NSString *facebookID = userDictionary[@"id"];
+            NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
+            
             NSMutableDictionary *userProfile = [[NSMutableDictionary alloc] initWithCapacity:8];
             if (userDictionary[@"name"]) {
-                userProfile[@"name"] = userDictionary[@"name"];
+                userProfile[kUserProfileNameKey] = userDictionary[@"name"];
             }
             if (userDictionary[@"first_name"]) {
-                userProfile[@"first_name"] = userDictionary[@"first_name"];
+                userProfile[kUserProfileFirstNameKey] = userDictionary[@"first_name"];
             }
             if (userDictionary[@"location"][@"name"]) {
-                userProfile[@"location"][@"name"] = userDictionary[@"location"][@"name"];
+                userProfile[kUserProfileLocationKey][@"name"] = userDictionary[@"location"][@"name"];
             }
             if (userDictionary[@"gender"]) {
-                userProfile[@"gender"] = userDictionary[@"gender"];
+                userProfile[kUserProfileGenderKey] = userDictionary[@"gender"];
             }
             if (userDictionary[@"birthday"]) {
-                userProfile[@"birthday"] = userDictionary[@"birthday"];
+                userProfile[kUserProfileBirthdayKey] = userDictionary[@"birthday"];
             }
             if (userDictionary[@"interested_in"]) {
-                userProfile[@"interested_in"] = userDictionary[@"interested_in"];
+                userProfile[kUserProfileInterestedInKey] = userDictionary[@"interested_in"];
+            }
+            if ([pictureURL absoluteString]) {
+                userProfile[kUserProfilePictureURLKey] = [pictureURL absoluteString];
             }
             
-//            [[PFUser currentUser] setObject:userProfile forKey:@"profile"];
-//            [[PFUser currentUser] saveInBackground];
-            
             [[PFUser currentUser] setObject:userProfile forKey:@"profile"];
-            NSError *error;
-            [[PFUser currentUser] save:&error];
-            NSLog(@"%@",error);
+            [[PFUser currentUser] saveInBackground];
+            
+//            [[PFUser currentUser] setObject:userProfile forKey:kUserProfileKey];
+//            NSError *error;
+//            [[PFUser currentUser] save:&error];
+//            NSLog(@"%@",error);
             
             NSLog(@"%@", result);
         }
