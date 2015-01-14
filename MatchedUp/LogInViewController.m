@@ -7,10 +7,12 @@
 //
 
 #import "LogInViewController.h"
+#import <UIKit/UIKit.h>
 
 @interface LogInViewController ()
 
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong, nonatomic) NSMutableData *imageData;
 
 @end
 
@@ -21,6 +23,13 @@
     // Do any additional setup after loading the view.
     
     self.activityIndicator.hidden = YES;
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    if ([PFUser currentUser] && [PFFacebookUtils isLinkedWithUser:[PFUser currentUser]]) {
+        [self updateUserInformation];
+        [self performSegueWithIdentifier:@"loginToTabBarSegue" sender:self];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -95,6 +104,8 @@
             [[PFUser currentUser] setObject:userProfile forKey:@"profile"];
             [[PFUser currentUser] saveInBackground];
             
+            [self requestImage];
+            
 //            [[PFUser currentUser] setObject:userProfile forKey:kUserProfileKey];
 //            NSError *error;
 //            [[PFUser currentUser] save:&error];
@@ -108,6 +119,55 @@
     }];
 }
 
+- (void)uploadPFFileToparse:(UIImage *)image {
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.8);
+    
+    if (!imageData) {
+        NSLog(@"imageData was not found");
+        return;
+    }
+    
+    PFFile *photoFile = [PFFile fileWithData:imageData];
+    
+    [photoFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            PFObject *photo = [PFObject objectWithClassName:kPhotoClassKey];
+            [photo setObject:[PFUser currentUser] forKey:kPhotoUserKey];
+            [photo setObject:photoFile forKey:kPhotoPictureKey];
+            [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                NSLog(@"Photo saved successfully");
+            }];
+        }
+    }];
+}
+
+- (void)requestImage {
+    PFQuery *query = [PFQuery queryWithClassName:kPhotoClassKey];
+    [query whereKey:kPhotoUserKey equalTo:[PFUser currentUser]];
+    
+    [query countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+        if (number == 0) {
+            PFUser *user = [PFUser currentUser];
+            self.imageData = [[NSMutableData alloc] init];
+            
+            NSURL *profilePictureURL = [NSURL URLWithString:user[kUserProfileKey][kUserProfilePictureURLKey]];
+            NSURLRequest *urlRequest = [NSURLRequest requestWithURL:profilePictureURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:4.0f];
+            NSURLConnection *urlConnection = [[NSURLConnection alloc] initWithRequest:urlRequest delegate:self];
+            if (!urlRequest) {
+                NSLog(@"Failed to Download Picture");
+            }
+        }
+    }];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [self.imageData appendData:data];
+}
+
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    UIImage *profileImage = [UIImage imageWithData:self.imageData];
+    [self uploadPFFileToparse:profileImage];
+}
 
 /*
 #pragma mark - Navigation
