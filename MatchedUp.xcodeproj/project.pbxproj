@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7080104EA370D98E093C2982 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5280840961B0E58EE5223C9F /* libPods.a */; };
+		DD6FFAE51A6D8BEC00816CDB /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6FFAE41A6D8BEC00816CDB /* HomeViewController.m */; };
+		DD6FFAE91A6D8E6000816CDB /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6FFAE81A6D8E6000816CDB /* SettingsViewController.m */; };
+		DD6FFAED1A6DBBB100816CDB /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6FFAEC1A6DBBB100816CDB /* EditProfileViewController.m */; };
 		DD7CE0DE1A65C92700691BDD /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = DD7CE0DD1A65C92700691BDD /* Constants.m */; };
 		DD9F99481A62D818005B4445 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9F99471A62D818005B4445 /* main.m */; };
 		DD9F994B1A62D818005B4445 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9F994A1A62D818005B4445 /* AppDelegate.m */; };
@@ -32,6 +35,12 @@
 		5280840961B0E58EE5223C9F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		62698E773710A99E3454A039 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DC5E6D324B3C83220DACC12D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		DD6FFAE31A6D8BEC00816CDB /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		DD6FFAE41A6D8BEC00816CDB /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		DD6FFAE71A6D8E6000816CDB /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		DD6FFAE81A6D8E6000816CDB /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		DD6FFAEB1A6DBBB100816CDB /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
+		DD6FFAEC1A6DBBB100816CDB /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
 		DD7CE0DC1A65C92700691BDD /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		DD7CE0DD1A65C92700691BDD /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		DD7CE0DF1A65C97200691BDD /* MatchedUp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MatchedUp-Prefix.pch"; sourceTree = SOURCE_ROOT; };
@@ -86,6 +95,42 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DD6FFAE11A6D8BAD00816CDB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				DD9F996E1A62D8AF005B4445 /* LogInViewController.h */,
+				DD9F996F1A62D8AF005B4445 /* LogInViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		DD6FFAE21A6D8BB400816CDB /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				DD6FFAE31A6D8BEC00816CDB /* HomeViewController.h */,
+				DD6FFAE41A6D8BEC00816CDB /* HomeViewController.m */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		DD6FFAE61A6D8E5500816CDB /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				DD6FFAE71A6D8E6000816CDB /* SettingsViewController.h */,
+				DD6FFAE81A6D8E6000816CDB /* SettingsViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		DD6FFAEA1A6DBB7100816CDB /* Edit Profile */ = {
+			isa = PBXGroup;
+			children = (
+				DD6FFAEB1A6DBBB100816CDB /* EditProfileViewController.h */,
+				DD6FFAEC1A6DBBB100816CDB /* EditProfileViewController.m */,
+			);
+			name = "Edit Profile";
+			sourceTree = "<group>";
+		};
 		DD9F99391A62D818005B4445 = {
 			isa = PBXGroup;
 			children = (
@@ -109,12 +154,14 @@
 		DD9F99441A62D818005B4445 /* MatchedUp */ = {
 			isa = PBXGroup;
 			children = (
+				DD6FFAEA1A6DBB7100816CDB /* Edit Profile */,
+				DD6FFAE61A6D8E5500816CDB /* Settings */,
+				DD6FFAE21A6D8BB400816CDB /* Home */,
+				DD6FFAE11A6D8BAD00816CDB /* Login */,
 				DD7CE0DF1A65C97200691BDD /* MatchedUp-Prefix.pch */,
 				DD9F99491A62D818005B4445 /* AppDelegate.h */,
 				DD9F994A1A62D818005B4445 /* AppDelegate.m */,
 				DD9F99521A62D818005B4445 /* Main.storyboard */,
-				DD9F996E1A62D8AF005B4445 /* LogInViewController.h */,
-				DD9F996F1A62D8AF005B4445 /* LogInViewController.m */,
 				DD9F99551A62D818005B4445 /* Images.xcassets */,
 				DD9F99571A62D818005B4445 /* LaunchScreen.xib */,
 				DD9F99451A62D818005B4445 /* Supporting Files */,
@@ -287,7 +334,10 @@
 			files = (
 				DD9F994B1A62D818005B4445 /* AppDelegate.m in Sources */,
 				DD9F99701A62D8AF005B4445 /* LogInViewController.m in Sources */,
+				DD6FFAED1A6DBBB100816CDB /* EditProfileViewController.m in Sources */,
 				DD9F99481A62D818005B4445 /* main.m in Sources */,
+				DD6FFAE91A6D8E6000816CDB /* SettingsViewController.m in Sources */,
+				DD6FFAE51A6D8BEC00816CDB /* HomeViewController.m in Sources */,
 				DD7CE0DE1A65C92700691BDD /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
