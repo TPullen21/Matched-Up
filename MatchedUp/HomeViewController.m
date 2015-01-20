@@ -19,6 +19,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *infoButton;
 @property (strong, nonatomic) IBOutlet UIButton *dislikeButton;
 
+@property (strong, nonatomic) NSArray *photos;
+@property (nonatomic) int currentPhotoIndex;
+
 @end
 
 @implementation HomeViewController
@@ -26,6 +29,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.likeButton.enabled = NO;
+    self.dislikeButton.enabled = NO;
+    self.infoButton.enabled = NO;
+    
+    self.currentPhotoIndex = 0;
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Photo"];
+    [query includeKey:@"user"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            self.photos = objects;
+        }
+        else {
+            NSLog(@"%@", error);
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

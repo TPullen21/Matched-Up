@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7080104EA370D98E093C2982 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5280840961B0E58EE5223C9F /* libPods.a */; };
+		DD612E961A6F000A002B6294 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD612E951A6F000A002B6294 /* ProfileViewController.m */; };
 		DD6FFAE51A6D8BEC00816CDB /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6FFAE41A6D8BEC00816CDB /* HomeViewController.m */; };
 		DD6FFAE91A6D8E6000816CDB /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6FFAE81A6D8E6000816CDB /* SettingsViewController.m */; };
 		DD6FFAED1A6DBBB100816CDB /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6FFAEC1A6DBBB100816CDB /* EditProfileViewController.m */; };
@@ -35,6 +36,8 @@
 		5280840961B0E58EE5223C9F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		62698E773710A99E3454A039 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DC5E6D324B3C83220DACC12D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		DD612E941A6F000A002B6294 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		DD612E951A6F000A002B6294 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		DD6FFAE31A6D8BEC00816CDB /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		DD6FFAE41A6D8BEC00816CDB /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		DD6FFAE71A6D8E6000816CDB /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -93,6 +96,15 @@
 				5280840961B0E58EE5223C9F /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DD612E931A6F0000002B6294 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				DD612E941A6F000A002B6294 /* ProfileViewController.h */,
+				DD612E951A6F000A002B6294 /* ProfileViewController.m */,
+			);
+			name = Profile;
 			sourceTree = "<group>";
 		};
 		DD6FFAE11A6D8BAD00816CDB /* Login */ = {
@@ -154,6 +166,7 @@
 		DD9F99441A62D818005B4445 /* MatchedUp */ = {
 			isa = PBXGroup;
 			children = (
+				DD612E931A6F0000002B6294 /* Profile */,
 				DD6FFAEA1A6DBB7100816CDB /* Edit Profile */,
 				DD6FFAE61A6D8E5500816CDB /* Settings */,
 				DD6FFAE21A6D8BB400816CDB /* Home */,
@@ -334,6 +347,7 @@
 			files = (
 				DD9F994B1A62D818005B4445 /* AppDelegate.m in Sources */,
 				DD9F99701A62D8AF005B4445 /* LogInViewController.m in Sources */,
+				DD612E961A6F000A002B6294 /* ProfileViewController.m in Sources */,
 				DD6FFAED1A6DBBB100816CDB /* EditProfileViewController.m in Sources */,
 				DD9F99481A62D818005B4445 /* main.m in Sources */,
 				DD6FFAE91A6D8E6000816CDB /* SettingsViewController.m in Sources */,
