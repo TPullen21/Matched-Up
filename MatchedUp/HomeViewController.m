@@ -7,6 +7,8 @@
 //
 
 #import "HomeViewController.h"
+#import "TestUser.h"
+#import "ProfileViewController.h"
 
 @interface HomeViewController ()
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *chatBarButtonItem;
@@ -35,6 +37,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    //[TestUser saveTestUserToParse];
+    
     self.likeButton.enabled = NO;
     self.dislikeButton.enabled = NO;
     self.infoButton.enabled = NO;
@@ -42,6 +46,7 @@
     self.currentPhotoIndex = 0;
     
     PFQuery *query = [PFQuery queryWithClassName:kPhotoClassKey];
+    [query whereKey:kPhotoUserKey notEqualTo:[PFUser currentUser]];
     [query includeKey:kPhotoUserKey];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -58,6 +63,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"homeToProfileSegue"]) {
+        ProfileViewController *profileVC = segue.destinationViewController;
+        profileVC.photo = self.photo;
+    }
 }
 
 #pragma mark - IBActions
@@ -77,6 +89,7 @@
 }
 
 - (IBAction)infoButtonPressed:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"homeToProfileSegue" sender:nil];
 }
 
 #pragma mark - Helper Methods
@@ -132,6 +145,7 @@
             
             self.likeButton.enabled = YES;
             self.dislikeButton.enabled = YES;
+            self.infoButton.enabled = YES;
         }
     }];
     

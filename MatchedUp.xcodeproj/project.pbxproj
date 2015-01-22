@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		7080104EA370D98E093C2982 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5280840961B0E58EE5223C9F /* libPods.a */; };
+		DD507BB71A71AA4B00F5EF47 /* TestUser.m in Sources */ = {isa = PBXBuildFile; fileRef = DD507BB61A71AA4B00F5EF47 /* TestUser.m */; };
+		DD507BBC1A71AC4300F5EF47 /* person1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DD507BB81A71AC4300F5EF47 /* person1.jpeg */; };
+		DD507BBD1A71AC4300F5EF47 /* person2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DD507BB91A71AC4300F5EF47 /* person2.jpeg */; };
+		DD507BBE1A71AC4300F5EF47 /* person3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DD507BBA1A71AC4300F5EF47 /* person3.jpg */; };
+		DD507BBF1A71AC4300F5EF47 /* person4.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DD507BBB1A71AC4300F5EF47 /* person4.jpeg */; };
 		DD612E961A6F000A002B6294 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD612E951A6F000A002B6294 /* ProfileViewController.m */; };
 		DD6FFAE51A6D8BEC00816CDB /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6FFAE41A6D8BEC00816CDB /* HomeViewController.m */; };
 		DD6FFAE91A6D8E6000816CDB /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD6FFAE81A6D8E6000816CDB /* SettingsViewController.m */; };
@@ -36,6 +41,12 @@
 		5280840961B0E58EE5223C9F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		62698E773710A99E3454A039 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DC5E6D324B3C83220DACC12D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		DD507BB51A71AA4B00F5EF47 /* TestUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestUser.h; sourceTree = "<group>"; };
+		DD507BB61A71AA4B00F5EF47 /* TestUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestUser.m; sourceTree = "<group>"; };
+		DD507BB81A71AC4300F5EF47 /* person1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = person1.jpeg; sourceTree = "<group>"; };
+		DD507BB91A71AC4300F5EF47 /* person2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = person2.jpeg; sourceTree = "<group>"; };
+		DD507BBA1A71AC4300F5EF47 /* person3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = person3.jpg; sourceTree = "<group>"; };
+		DD507BBB1A71AC4300F5EF47 /* person4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = person4.jpeg; sourceTree = "<group>"; };
 		DD612E941A6F000A002B6294 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		DD612E951A6F000A002B6294 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		DD6FFAE31A6D8BEC00816CDB /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -101,6 +112,8 @@
 		DD507BB41A71A58700F5EF47 /* Create Parse User */ = {
 			isa = PBXGroup;
 			children = (
+				DD507BB51A71AA4B00F5EF47 /* TestUser.h */,
+				DD507BB61A71AA4B00F5EF47 /* TestUser.m */,
 			);
 			name = "Create Parse User";
 			sourceTree = "<group>";
@@ -193,6 +206,10 @@
 		DD9F99451A62D818005B4445 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DD507BB81A71AC4300F5EF47 /* person1.jpeg */,
+				DD507BB91A71AC4300F5EF47 /* person2.jpeg */,
+				DD507BBA1A71AC4300F5EF47 /* person3.jpg */,
+				DD507BBB1A71AC4300F5EF47 /* person4.jpeg */,
 				DD9F99461A62D818005B4445 /* Info.plist */,
 				DD9F99471A62D818005B4445 /* main.m */,
 				DD7CE0DC1A65C92700691BDD /* Constants.h */,
@@ -300,9 +317,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD507BBE1A71AC4300F5EF47 /* person3.jpg in Resources */,
+				DD507BBC1A71AC4300F5EF47 /* person1.jpeg in Resources */,
 				DD9F99541A62D818005B4445 /* Main.storyboard in Resources */,
 				DD9F99591A62D818005B4445 /* LaunchScreen.xib in Resources */,
+				DD507BBF1A71AC4300F5EF47 /* person4.jpeg in Resources */,
 				DD9F99561A62D818005B4445 /* Images.xcassets in Resources */,
+				DD507BBD1A71AC4300F5EF47 /* person2.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +378,7 @@
 				DD9F99701A62D8AF005B4445 /* LogInViewController.m in Sources */,
 				DD612E961A6F000A002B6294 /* ProfileViewController.m in Sources */,
 				DD6FFAED1A6DBBB100816CDB /* EditProfileViewController.m in Sources */,
+				DD507BB71A71AA4B00F5EF47 /* TestUser.m in Sources */,
 				DD9F99481A62D818005B4445 /* main.m in Sources */,
 				DD6FFAE91A6D8E6000816CDB /* SettingsViewController.m in Sources */,
 				DD6FFAE51A6D8BEC00816CDB /* HomeViewController.m in Sources */,
