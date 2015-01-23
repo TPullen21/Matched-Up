@@ -196,12 +196,6 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wOb-q3-Bkm">
                                 <rect key="frame" x="255" y="225" width="51" height="31"/>
                             </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nCH-ZE-vbJ">
-                                <rect key="frame" x="255" y="268" width="51" height="31"/>
-                            </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4JK-ul-wrF">
-                                <rect key="frame" x="255" y="308" width="51" height="31"/>
-                            </switch>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNU-9a-aa7">
                                 <rect key="frame" x="242" y="530" width="75" height="30"/>
                                 <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
@@ -223,12 +217,16 @@
                                     <action selector="logoutButtonPressed:" destination="vCq-iN-KNb" eventType="touchUpInside" id="Qge-w9-pRy"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nCH-ZE-vbJ">
+                                <rect key="frame" x="255" y="308" width="51" height="31"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="lCz-Re-cCI"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="ageLabel" destination="DJA-GH-eAC" id="yU9-CF-zaS"/>
                         <outlet property="ageSlider" destination="4R8-ti-agv" id="CgD-vi-BlI"/>
                         <outlet property="editProfileButton" destination="nNU-9a-aa7" id="FSL-5w-8SJ"/>
                         <outlet property="logoutButton" destination="q2W-U9-qRd" id="8Ja-o9-QuZ"/>
