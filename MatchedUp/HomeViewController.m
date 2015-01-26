@@ -178,6 +178,7 @@
         self.isLikedByCurrentUser = YES;
         self.isDislikedByCurrentUser = NO;
         [self.activities addObject:likeActivity];
+        [self checkForPhotoUserLikes];
         [self setupNextPhoto];
     }];
 }
@@ -228,6 +229,41 @@
     else {
         [self saveDislike];
     }
+}
+
+- (void)checkForPhotoUserLikes {
+    PFQuery *query = [PFQuery queryWithClassName:kActivityClassKey];
+    [query whereKey:kActivityFromUserKey equalTo:self.photo[kPhotoUserKey]];
+    [query whereKey:kActivityToUserKey equalTo:[PFUser currentUser]];
+    [query whereKey:kActivityTypeKey equalTo:kActivityTypeLikeKey];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if ([objects count] > 0) {
+            [self createChatRoom];
+        }
+    }];
+}
+
+- (void)createChatRoom {
+    PFQuery *queryForChatRoom = [PFQuery queryWithClassName:@"ChatRoom"];
+    [queryForChatRoom whereKey:@"user1" equalTo:[PFUser currentUser]];
+    [queryForChatRoom whereKey:@"user2" equalTo:self.photo[kPhotoUserKey]];
+    
+    PFQuery *queryForChatRoomInverse = [PFQuery queryWithClassName:@"ChatRoom"];
+    [queryForChatRoom whereKey:@"user1" equalTo:self.photo[kPhotoUserKey]];
+    [queryForChatRoom whereKey:@"user2" equalTo:[PFUser currentUser]];
+    
+    PFQuery *combinedQuery = [PFQuery orQueryWithSubqueries:@[queryForChatRoom, queryForChatRoomInverse]];
+    
+    [combinedQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if ([objects count] == 0) {
+            PFObject *chatroom = [PFObject objectWithClassName:@"ChatRoom"];
+            [chatroom setObject:[PFUser currentUser] forKey:@"user1"];
+            [chatroom setObject:self.photo[kPhotoUserKey] forKey:@"user2"];
+            [chatroom saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                [self performSegueWithIdentifier:@"homeToMatchSegue" sender:nil];
+            }];
+        }
+    }];
 }
 
 /*
