@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7080104EA370D98E093C2982 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5280840961B0E58EE5223C9F /* libPods.a */; };
+		DD01FED71A76DCB6004D1A4A /* MatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD01FED61A76DCB6004D1A4A /* MatchViewController.m */; };
+		DD01FEDB1A76DE58004D1A4A /* MatchesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD01FEDA1A76DE58004D1A4A /* MatchesViewController.m */; };
 		DD507BB71A71AA4B00F5EF47 /* TestUser.m in Sources */ = {isa = PBXBuildFile; fileRef = DD507BB61A71AA4B00F5EF47 /* TestUser.m */; };
 		DD507BBC1A71AC4300F5EF47 /* person1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DD507BB81A71AC4300F5EF47 /* person1.jpeg */; };
 		DD507BBD1A71AC4300F5EF47 /* person2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = DD507BB91A71AC4300F5EF47 /* person2.jpeg */; };
@@ -25,6 +27,7 @@
 		DD9F99591A62D818005B4445 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD9F99571A62D818005B4445 /* LaunchScreen.xib */; };
 		DD9F99651A62D818005B4445 /* MatchedUpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9F99641A62D818005B4445 /* MatchedUpTests.m */; };
 		DD9F99701A62D8AF005B4445 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9F996F1A62D8AF005B4445 /* LogInViewController.m */; };
+		DDDE03C81A76E051007F539B /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDE03C71A76E051007F539B /* ChatViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +44,10 @@
 		5280840961B0E58EE5223C9F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		62698E773710A99E3454A039 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DC5E6D324B3C83220DACC12D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		DD01FED51A76DCB6004D1A4A /* MatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchViewController.h; sourceTree = "<group>"; };
+		DD01FED61A76DCB6004D1A4A /* MatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchViewController.m; sourceTree = "<group>"; };
+		DD01FED91A76DE58004D1A4A /* MatchesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchesViewController.h; sourceTree = "<group>"; };
+		DD01FEDA1A76DE58004D1A4A /* MatchesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchesViewController.m; sourceTree = "<group>"; };
 		DD507BB51A71AA4B00F5EF47 /* TestUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestUser.h; sourceTree = "<group>"; };
 		DD507BB61A71AA4B00F5EF47 /* TestUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestUser.m; sourceTree = "<group>"; };
 		DD507BB81A71AC4300F5EF47 /* person1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = person1.jpeg; sourceTree = "<group>"; };
@@ -71,6 +78,8 @@
 		DD9F99641A62D818005B4445 /* MatchedUpTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MatchedUpTests.m; sourceTree = "<group>"; };
 		DD9F996E1A62D8AF005B4445 /* LogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogInViewController.h; sourceTree = "<group>"; };
 		DD9F996F1A62D8AF005B4445 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
+		DDDE03C61A76E051007F539B /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		DDDE03C71A76E051007F539B /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +116,33 @@
 				5280840961B0E58EE5223C9F /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DD01FED41A76DC99004D1A4A /* Match */ = {
+			isa = PBXGroup;
+			children = (
+				DD01FED51A76DCB6004D1A4A /* MatchViewController.h */,
+				DD01FED61A76DCB6004D1A4A /* MatchViewController.m */,
+			);
+			name = Match;
+			sourceTree = "<group>";
+		};
+		DD01FED81A76DE43004D1A4A /* Matches */ = {
+			isa = PBXGroup;
+			children = (
+				DD01FED91A76DE58004D1A4A /* MatchesViewController.h */,
+				DD01FEDA1A76DE58004D1A4A /* MatchesViewController.m */,
+			);
+			name = Matches;
+			sourceTree = "<group>";
+		};
+		DD01FEDC1A76DEB1004D1A4A /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				DDDE03C61A76E051007F539B /* ChatViewController.h */,
+				DDDE03C71A76E051007F539B /* ChatViewController.m */,
+			);
+			name = Chat;
 			sourceTree = "<group>";
 		};
 		DD507BB41A71A58700F5EF47 /* Create Parse User */ = {
@@ -186,6 +222,9 @@
 		DD9F99441A62D818005B4445 /* MatchedUp */ = {
 			isa = PBXGroup;
 			children = (
+				DD01FEDC1A76DEB1004D1A4A /* Chat */,
+				DD01FED81A76DE43004D1A4A /* Matches */,
+				DD01FED41A76DC99004D1A4A /* Match */,
 				DD507BB41A71A58700F5EF47 /* Create Parse User */,
 				DD612E931A6F0000002B6294 /* Profile */,
 				DD6FFAEA1A6DBB7100816CDB /* Edit Profile */,
@@ -375,6 +414,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD9F994B1A62D818005B4445 /* AppDelegate.m in Sources */,
+				DD01FEDB1A76DE58004D1A4A /* MatchesViewController.m in Sources */,
+				DDDE03C81A76E051007F539B /* ChatViewController.m in Sources */,
 				DD9F99701A62D8AF005B4445 /* LogInViewController.m in Sources */,
 				DD612E961A6F000A002B6294 /* ProfileViewController.m in Sources */,
 				DD6FFAED1A6DBBB100816CDB /* EditProfileViewController.m in Sources */,
@@ -382,6 +423,7 @@
 				DD9F99481A62D818005B4445 /* main.m in Sources */,
 				DD6FFAE91A6D8E6000816CDB /* SettingsViewController.m in Sources */,
 				DD6FFAE51A6D8BEC00816CDB /* HomeViewController.m in Sources */,
+				DD01FED71A76DCB6004D1A4A /* MatchViewController.m in Sources */,
 				DD7CE0DE1A65C92700691BDD /* Constants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
