@@ -9,8 +9,10 @@
 #import "HomeViewController.h"
 #import "TestUser.h"
 #import "ProfileViewController.h"
+#import "MatchViewController.h"
 
-@interface HomeViewController ()
+@interface HomeViewController () <MatchViewControllerDelegate>
+
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *chatBarButtonItem;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *settingsBarButtonItem;
 @property (strong, nonatomic) IBOutlet UIImageView *photoImageView;
@@ -69,6 +71,11 @@
     if ([segue.identifier isEqualToString:@"homeToProfileSegue"]) {
         ProfileViewController *profileVC = segue.destinationViewController;
         profileVC.photo = self.photo;
+    }
+    else if ([segue.identifier isEqualToString:@"homeToMatchSegue"]) {
+        MatchViewController *matchVC = segue.destinationViewController;
+        matchVC.matchedUserImage = self.photoImageView.image;
+        matchVC.delegate = self;
     }
 }
 
@@ -263,6 +270,14 @@
                 [self performSegueWithIdentifier:@"homeToMatchSegue" sender:nil];
             }];
         }
+    }];
+}
+
+#pragma mark - MatchViewController Delegate
+
+- (void)presentMatchesViewController {
+    [self dismissViewControllerAnimated:NO completion:^{
+        [self performSegueWithIdentifier:@"homeToMatchesSegue" sender:nil];
     }];
 }
 
