@@ -7,6 +7,7 @@
 //
 
 #import "MatchesViewController.h"
+#import "ChatViewController.h"
 
 @interface MatchesViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -39,6 +40,12 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    ChatViewController *chatVC = segue.destinationViewController;
+    NSIndexPath *indexPath = sender;
+    chatVC.chatRoom = self.availableChatRooms[indexPath.row];
 }
 
 #pragma mark - Helper Methods
@@ -86,7 +93,29 @@
     
     cell.textLabel.text = likedUser[@"profile"][@"firstName"];
     
+    //cell.imageView.image = place holder image
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    
+    PFQuery *queryForPhoto = [[PFQuery alloc] initWithClassName:@"Photo"];
+    [queryForPhoto whereKey:@"user" equalTo:likedUser];
+    [queryForPhoto findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if ([objects count] > 0) {
+            PFObject *photo = objects[0];
+            PFFile *pictureFile = photo[kPhotoPictureKey];
+            [pictureFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                cell.imageView.image = [UIImage imageWithData:data];
+                cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+            }];
+        }
+    }];
+    
     return cell;
+}
+
+#pragma mark - UITableView Delegate
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"matchesToChatSegue" sender:indexPath];
 }
 
 /*
