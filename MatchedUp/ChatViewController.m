@@ -63,7 +63,7 @@
     return [self.chats count];
 }
 
-#pragma mark - TableView Delegate
+#pragma mark - TableView Delegate Required
 
 - (void)didSendText:(NSString *)text {
     if (text.length != 0) {
@@ -80,6 +80,74 @@
             [self scrollToBottomAnimated:YES];
         }];
     }
+}
+
+-(JSBubbleMessageType)messageTypeForRowAtIndexPath:(NSIndexPath *)indexPath {
+    PFObject *chat = self.chats[indexPath.row];
+    PFUser *testFromUser = chat[@"fromUser"];
+    
+    if ([testFromUser.objectId isEqual:self.currentUser.objectId]) {
+        return JSBubbleMessageTypeOutgoing;
+    }
+    else {
+        return JSBubbleMessageTypeIncoming;
+    }
+}
+
+-(UIImageView *)bubbleImageViewWithType:(JSBubbleMessageType)type forRowAtIndexPath:(NSIndexPath *)indexPath {
+    PFObject *chat = self.chats[indexPath.row];
+    PFUser *testFromUser = chat[@"fromUser"];
+    
+    if ([testFromUser.objectId isEqual:self.currentUser.objectId]) {
+        return [JSBubbleImageViewFactory bubbleImageViewForType:type color:[UIColor js_bubbleGreenColor]];
+    }
+    else {
+        return [JSBubbleImageViewFactory bubbleImageViewForType:type color:[UIColor js_bubbleLightGrayColor]];
+    }
+}
+
+-(JSMessagesViewTimestampPolicy)timestampPolicy {
+    return JSMessagesViewTimestampPolicyAll;
+}
+
+-(JSMessagesViewAvatarPolicy)avatarPolicy {
+    return JSMessagesViewAvatarPolicyNone;
+}
+
+-(JSMessagesViewSubtitlePolicy)subtitlePolicy {
+    return JSMessagesViewSubtitlePolicyNone;
+}
+
+-(JSMessageInputViewStyle)inputViewStyle {
+    return JSMessageInputViewStyleFlat;
+}
+
+#pragma mark - Messages View Delegate Optional
+
+-(void)configureCell:(JSBubbleMessageCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    if ([cell messageType] == JSBubbleMessageTypeOutgoing) {
+        cell.bubbleView.textView.textColor = [UIColor whiteColor];
+    }
+}
+
+-(BOOL)shouldPreventScrollToBottomWhileUserScrolling {
+    return YES;
+}
+
+#pragma mark - Messages View Delegate Required
+
+-(NSString *)textForRowAtIndexPath:(NSIndexPath *)indexPath {
+    PFObject *chat = self.chats[indexPath.row];
+    NSString *message = chat[@"text"];
+    return message;
+}
+
+- (NSDate *)timestampForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
+}
+
+- (NSString *)subtitleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
 }
 
 /*
