@@ -50,11 +50,20 @@
     }
     self.title = self.withUser[@"profile"][@"firstName"];
     self.initialLoadComplete = NO;
+    
+    [self checkForNewChats];
+    
+    self.chatsTimer = [NSTimer scheduledTimerWithTimeInterval:15 target:self selector:@selector(checkForNewChats) userInfo:nil repeats:YES];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [self.chatsTimer invalidate];
+    self.chatsTimer = nil;
 }
 
 #pragma mark - TableView DataSource
@@ -82,7 +91,7 @@
     }
 }
 
--(JSBubbleMessageType)messageTypeForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (JSBubbleMessageType)messageTypeForRowAtIndexPath:(NSIndexPath *)indexPath {
     PFObject *chat = self.chats[indexPath.row];
     PFUser *testFromUser = chat[@"fromUser"];
     
@@ -94,7 +103,7 @@
     }
 }
 
--(UIImageView *)bubbleImageViewWithType:(JSBubbleMessageType)type forRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UIImageView *)bubbleImageViewWithType:(JSBubbleMessageType)type forRowAtIndexPath:(NSIndexPath *)indexPath {
     PFObject *chat = self.chats[indexPath.row];
     PFUser *testFromUser = chat[@"fromUser"];
     
@@ -106,37 +115,37 @@
     }
 }
 
--(JSMessagesViewTimestampPolicy)timestampPolicy {
+- (JSMessagesViewTimestampPolicy)timestampPolicy {
     return JSMessagesViewTimestampPolicyAll;
 }
 
--(JSMessagesViewAvatarPolicy)avatarPolicy {
+- (JSMessagesViewAvatarPolicy)avatarPolicy {
     return JSMessagesViewAvatarPolicyNone;
 }
 
--(JSMessagesViewSubtitlePolicy)subtitlePolicy {
+- (JSMessagesViewSubtitlePolicy)subtitlePolicy {
     return JSMessagesViewSubtitlePolicyNone;
 }
 
--(JSMessageInputViewStyle)inputViewStyle {
+- (JSMessageInputViewStyle)inputViewStyle {
     return JSMessageInputViewStyleFlat;
 }
 
 #pragma mark - Messages View Delegate Optional
 
--(void)configureCell:(JSBubbleMessageCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+- (void)configureCell:(JSBubbleMessageCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     if ([cell messageType] == JSBubbleMessageTypeOutgoing) {
         cell.bubbleView.textView.textColor = [UIColor whiteColor];
     }
 }
 
--(BOOL)shouldPreventScrollToBottomWhileUserScrolling {
+- (BOOL)shouldPreventScrollToBottomWhileUserScrolling {
     return YES;
 }
 
 #pragma mark - Messages View Delegate Required
 
--(NSString *)textForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (NSString *)textForRowAtIndexPath:(NSIndexPath *)indexPath {
     PFObject *chat = self.chats[indexPath.row];
     NSString *message = chat[@"text"];
     return message;
@@ -148,6 +157,31 @@
 
 - (NSString *)subtitleForRowAtIndexPath:(NSIndexPath *)indexPath {
     return nil;
+}
+
+#pragma mark - Helper Methods
+
+- (void)checkForNewChats {
+    int oldChatCount = (int)[self.chats count];
+    
+    PFQuery *queryForChats = [PFQuery queryWithClassName:@"Chat"];
+    [queryForChats whereKey:@"chatroom" equalTo:self.chatRoom];
+    [queryForChats orderByAscending:@"createdAt"];
+    [queryForChats findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            if (self.initialLoadComplete == NO || oldChatCount != [objects count]) {
+                self.chats = [objects mutableCopy];
+                [self.tableView reloadData];
+                
+                if (self.initialLoadComplete == YES) {
+                    [JSMessageSoundEffect playMessageReceivedSound];
+                }
+                
+                self.initialLoadComplete = YES;
+                [self scrollToBottomAnimated:YES];
+            }
+        }
+    }];
 }
 
 /*
