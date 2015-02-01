@@ -219,10 +219,10 @@
     [likeActivity setObject:[self.photo objectForKey:kPhotoUserKey] forKey:kActivityToUserKey];
     [likeActivity setObject:self.photo forKey:kActivityPhotoKey];
     [likeActivity saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [self checkForChatRoom];
         self.isLikedByCurrentUser = YES;
         self.isDislikedByCurrentUser = NO;
         [self.activities addObject:likeActivity];
-        [self checkForPhotoUserLikes];
         [self setupNextPhoto];
     }];
 }
@@ -275,7 +275,7 @@
     }
 }
 
-- (void)checkForPhotoUserLikes {
+- (void)checkForChatRoom {
     PFQuery *query = [PFQuery queryWithClassName:kActivityClassKey];
     [query whereKey:kActivityFromUserKey equalTo:self.photo[kPhotoUserKey]];
     [query whereKey:kActivityToUserKey equalTo:[PFUser currentUser]];
