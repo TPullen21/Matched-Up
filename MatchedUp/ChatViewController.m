@@ -83,7 +83,7 @@
         [chat setObject:text forKey:@"text"];
         [chat saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             [self.chats addObject:chat];
-            [JSMessageSoundEffect playMessageSentSound];
+            //[JSMessageSoundEffect playMessageSentSound];
             [self.tableView reloadData];
             [self finishSend];
             [self scrollToBottomAnimated:YES];
@@ -174,7 +174,7 @@
                 [self.tableView reloadData];
                 
                 if (self.initialLoadComplete == YES) {
-                    [JSMessageSoundEffect playMessageReceivedSound];
+                    //[JSMessageSoundEffect playMessageReceivedSound];
                 }
                 
                 self.initialLoadComplete = YES;

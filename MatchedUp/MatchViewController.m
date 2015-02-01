@@ -46,7 +46,7 @@
 #pragma mark - IBActions
 
 - (IBAction)viewChatsButtonPressed:(UIButton *)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];    
+    [self.delegate presentMatchesViewController];
     
 }
 
