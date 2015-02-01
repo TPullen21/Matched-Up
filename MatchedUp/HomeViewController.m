@@ -288,21 +288,21 @@
 }
 
 - (void)createChatRoom {
-    PFQuery *queryForChatRoom = [PFQuery queryWithClassName:@"ChatRoom"];
-    [queryForChatRoom whereKey:@"user1" equalTo:[PFUser currentUser]];
-    [queryForChatRoom whereKey:@"user2" equalTo:self.photo[kPhotoUserKey]];
+    PFQuery *queryForChatRoom = [PFQuery queryWithClassName:kChatRoomClassKey];
+    [queryForChatRoom whereKey:kChatRoomUser1Key equalTo:[PFUser currentUser]];
+    [queryForChatRoom whereKey:kChatRoomUser2Key equalTo:self.photo[kPhotoUserKey]];
     
-    PFQuery *queryForChatRoomInverse = [PFQuery queryWithClassName:@"ChatRoom"];
-    [queryForChatRoom whereKey:@"user1" equalTo:self.photo[kPhotoUserKey]];
-    [queryForChatRoom whereKey:@"user2" equalTo:[PFUser currentUser]];
+    PFQuery *queryForChatRoomInverse = [PFQuery queryWithClassName:kChatRoomClassKey];
+    [queryForChatRoom whereKey:kChatRoomUser1Key equalTo:self.photo[kPhotoUserKey]];
+    [queryForChatRoom whereKey:kChatRoomUser2Key equalTo:[PFUser currentUser]];
     
     PFQuery *combinedQuery = [PFQuery orQueryWithSubqueries:@[queryForChatRoom, queryForChatRoomInverse]];
     
     [combinedQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if ([objects count] == 0) {
-            PFObject *chatroom = [PFObject objectWithClassName:@"ChatRoom"];
-            [chatroom setObject:[PFUser currentUser] forKey:@"user1"];
-            [chatroom setObject:self.photo[kPhotoUserKey] forKey:@"user2"];
+            PFObject *chatroom = [PFObject objectWithClassName:kChatRoomClassKey];
+            [chatroom setObject:[PFUser currentUser] forKey:kChatRoomUser1Key];
+            [chatroom setObject:self.photo[kPhotoUserKey] forKey:kChatRoomUser2Key];
             [chatroom saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 [self performSegueWithIdentifier:@"homeToMatchSegue" sender:nil];
             }];
