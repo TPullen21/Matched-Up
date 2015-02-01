@@ -28,6 +28,7 @@
 		DD9F99651A62D818005B4445 /* MatchedUpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9F99641A62D818005B4445 /* MatchedUpTests.m */; };
 		DD9F99701A62D8AF005B4445 /* LogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9F996F1A62D8AF005B4445 /* LogInViewController.m */; };
 		DDDE03C81A76E051007F539B /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDDE03C71A76E051007F539B /* ChatViewController.m */; };
+		DDF960CD1A7E77DD00AC8A0B /* defaultPrefsFile.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDF960CC1A7E77DD00AC8A0B /* defaultPrefsFile.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		DD9F996F1A62D8AF005B4445 /* LogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInViewController.m; sourceTree = "<group>"; };
 		DDDE03C61A76E051007F539B /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		DDDE03C71A76E051007F539B /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
+		DDF960CC1A7E77DD00AC8A0B /* defaultPrefsFile.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = defaultPrefsFile.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 			children = (
 				DD6FFAE71A6D8E6000816CDB /* SettingsViewController.h */,
 				DD6FFAE81A6D8E6000816CDB /* SettingsViewController.m */,
+				DDF960CC1A7E77DD00AC8A0B /* defaultPrefsFile.plist */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				DD9F99541A62D818005B4445 /* Main.storyboard in Resources */,
 				DD9F99591A62D818005B4445 /* LaunchScreen.xib in Resources */,
 				DD507BBF1A71AC4300F5EF47 /* person4.jpeg in Resources */,
+				DDF960CD1A7E77DD00AC8A0B /* defaultPrefsFile.plist in Resources */,
 				DD9F99561A62D818005B4445 /* Images.xcassets in Resources */,
 				DD507BBD1A71AC4300F5EF47 /* person2.jpeg in Resources */,
 			);

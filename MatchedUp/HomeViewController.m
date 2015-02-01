@@ -40,6 +40,12 @@
     // Do any additional setup after loading the view.
     
     //[TestUser saveTestUserToParse];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    self.photoImageView.image = nil;
+    self.firstNameLabel.text = nil;
+    self.ageLabel.text = nil;
     
     self.likeButton.enabled = NO;
     self.dislikeButton.enabled = NO;
@@ -53,13 +59,21 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             self.photos = objects;
-            [self queryForCurrentPhotoIndex];
-            [self updateView];
+            
+            if ([self allowPhoto] == NO) {
+                [self setupNextPhoto];
+            }
+            else {
+                [self queryForCurrentPhotoIndex];
+            }
+            
+//            [self updateView];
         }
         else {
             NSLog(@"%@", error);
         }
     }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -167,12 +181,35 @@
 - (void)setupNextPhoto {
     if (self.currentPhotoIndex + 1 < self.photos.count) {
         self.currentPhotoIndex++;
+        if ([self allowPhoto] == NO) {
+            [self setupNextPhoto];
+        }
         [self queryForCurrentPhotoIndex];
     }
     else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No more users to view" message:@"Check back later for more people" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
         [alert show];
     }
+}
+
+- (BOOL)allowPhoto {
+    int maxAge = [[NSUserDefaults standardUserDefaults] integerForKey:kAgeMaxKey];
+    BOOL men = [[NSUserDefaults standardUserDefaults] boolForKey:kMenEnabledKey];
+    BOOL women = [[NSUserDefaults standardUserDefaults] boolForKey:kWomenEnabledKey];
+    BOOL single = [[NSUserDefaults standardUserDefaults] boolForKey:kSingleEnabledKey];
+    
+    PFObject *photo = self.photos[self.currentPhotoIndex];
+    PFUser *user = photo[kPhotoUserKey];
+    
+    int userAge = [user[kUserProfileKey][kUserProfileAgeKey] intValue];
+    NSString *gender = user[kUserProfileKey][kUserProfileGenderKey];
+    NSString *relationshipStatus = user[kUserProfileKey][kUserProfileRelationshipStatusKey];
+    
+    if (userAge > maxAge || (men == NO && [gender isEqualToString:@"male"]) || (women == NO && [gender isEqualToString:@"female"]) || (single == NO && ([relationshipStatus isEqualToString:@"single"] || relationshipStatus == nil))) {
+        return NO;
+    }
+    
+    return YES;
 }
 
 - (void)saveLike {
