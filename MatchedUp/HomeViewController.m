@@ -11,17 +11,18 @@
 #import "ProfileViewController.h"
 #import "MatchViewController.h"
 
-@interface HomeViewController () <MatchViewControllerDelegate>
+@interface HomeViewController () <MatchViewControllerDelegate, ProfileViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *chatBarButtonItem;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *settingsBarButtonItem;
 @property (strong, nonatomic) IBOutlet UIImageView *photoImageView;
 @property (strong, nonatomic) IBOutlet UILabel *firstNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *ageLabel;
-@property (strong, nonatomic) IBOutlet UILabel *tagLineLabel;
 @property (strong, nonatomic) IBOutlet UIButton *likeButton;
 @property (strong, nonatomic) IBOutlet UIButton *infoButton;
 @property (strong, nonatomic) IBOutlet UIButton *dislikeButton;
+@property (strong, nonatomic) IBOutlet UIView *labelContainerView;
+@property (strong, nonatomic) IBOutlet UIView *buttonContainerView;
 
 @property (strong, nonatomic) NSArray *photos;
 @property (strong, nonatomic) PFObject *photo;
@@ -40,6 +41,8 @@
     // Do any additional setup after loading the view.
     
     //[TestUser saveTestUserToParse];
+    
+    [self setupViews];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -76,6 +79,22 @@
     
 }
 
+- (void)setupViews {
+    self.view.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
+    
+    [self addShadowForView:self.buttonContainerView];
+    [self addShadowForView:self.labelContainerView];
+    self.photoImageView.layer.masksToBounds = YES;
+}
+
+- (void)addShadowForView:(UIView *)view {
+    view.layer.masksToBounds = NO;
+    view.layer.cornerRadius = 4;
+    view.layer.shadowRadius = 1;
+    view.layer.shadowOffset = CGSizeMake(0, 1);
+    view.layer.shadowOpacity = 0.25;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -85,6 +104,7 @@
     if ([segue.identifier isEqualToString:@"homeToProfileSegue"]) {
         ProfileViewController *profileVC = segue.destinationViewController;
         profileVC.photo = self.photo;
+        profileVC.delegate = self;
     }
     else if ([segue.identifier isEqualToString:@"homeToMatchSegue"]) {
         MatchViewController *matchVC = segue.destinationViewController;
@@ -174,8 +194,7 @@
 
 - (void)updateView {
     self.firstNameLabel.text = self.photo[kPhotoUserKey][kUserProfileKey][kUserProfileFirstNameKey];
-    self.ageLabel.text = [NSString stringWithFormat:@"%@", self.photo[kPhotoUserKey][kUserProfileKey][kUserProfileAgeKey]];
-    self.tagLineLabel.text = self.photo[kPhotoUserKey][kUserTagLineKey];
+    self.ageLabel.text = [NSString stringWithFormat:@"%@", self.photo[kPhotoUserKey][kUserProfileKey][kUserProfileAgeKey]];;
 }
 
 - (void)setupNextPhoto {
@@ -316,6 +335,19 @@
     [self dismissViewControllerAnimated:NO completion:^{
         [self performSegueWithIdentifier:@"homeToMatchesSegue" sender:nil];
     }];
+}
+
+#pragma mark - ProfileViewContoller Delegate
+
+- (void)didPressLike {
+    [self.navigationController popViewControllerAnimated:NO];
+    [self checkLike];
+}
+
+- (void)didPressDislike {
+    [self.navigationController popViewControllerAnimated:NO];
+    [self checkDislike];
+    
 }
 
 /*
