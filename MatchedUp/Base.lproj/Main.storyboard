@@ -153,7 +153,7 @@
             </objects>
             <point key="canvasLocation" x="672" y="0.0"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--Settings-->
         <scene sceneID="pKP-xX-13g">
             <objects>
                 <viewController id="vCq-iN-KNb" customClass="SettingsViewController" sceneMemberID="viewController">
@@ -210,21 +210,12 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wOb-q3-Bkm">
                                 <rect key="frame" x="255" y="225" width="51" height="31"/>
                             </switch>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNU-9a-aa7">
-                                <rect key="frame" x="242" y="530" width="75" height="30"/>
-                                <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Edit Profile">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="editProfileButtonPressed:" destination="vCq-iN-KNb" eventType="touchUpInside" id="Zt5-N2-6gW"/>
-                                    <segue destination="cuT-UK-ytk" kind="push" id="36z-Xz-1uf"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q2W-U9-qRd">
-                                <rect key="frame" x="16" y="530" width="49" height="30"/>
+                                <rect key="frame" x="16" y="518" width="288" height="30"/>
                                 <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Logout">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <state key="normal" title="Logout" backgroundImage="Logout.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -234,10 +225,23 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nCH-ZE-vbJ">
                                 <rect key="frame" x="255" y="308" width="51" height="31"/>
                             </switch>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNU-9a-aa7">
+                                <rect key="frame" x="16" y="470" width="288" height="30"/>
+                                <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <state key="normal" title="Edit Profile" backgroundImage="EditProfile.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="editProfileButtonPressed:" destination="vCq-iN-KNb" eventType="touchUpInside" id="Zt5-N2-6gW"/>
+                                    <segue destination="cuT-UK-ytk" kind="push" id="36z-Xz-1uf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="lCz-Re-cCI"/>
+                    <navigationItem key="navigationItem" title="Settings" id="lCz-Re-cCI"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="ageLabel" destination="DJA-GH-eAC" id="yU9-CF-zaS"/>
@@ -265,18 +269,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Why are you awesome?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntJ-yn-y0I">
-                                <rect key="frame" x="20" y="72" width="184" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About Me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntJ-yn-y0I">
+                                <rect key="frame" x="16" y="268" width="288" height="21"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F45-ak-w5R">
-                                <rect key="frame" x="20" y="220" width="280" height="280"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="UserImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="F45-ak-w5R">
+                                <rect key="frame" x="24" y="72" width="276" height="178"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8U6-Lc-yOZ">
-                                <rect key="frame" x="20" y="101" width="280" height="60"/>
-                                <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="16" y="297" width="288" height="87"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -284,17 +289,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="r0k-nq-Z4H">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="Wv8-zm-jFY">
-                            <connections>
-                                <action selector="saveBarButtonItemPressed:" destination="cuT-UK-ytk" id="MUI-mR-6pm"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="r0k-nq-Z4H"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="profilePictureImageView" destination="F45-ak-w5R" id="5f4-jS-zGE"/>
-                        <outlet property="saveBarButtonItem" destination="Wv8-zm-jFY" id="rur-g8-GWl"/>
                         <outlet property="tagLineTextView" destination="8U6-Lc-yOZ" id="XR6-lB-eD2"/>
                     </connections>
                 </viewController>
@@ -461,7 +459,7 @@
             </objects>
             <point key="canvasLocation" x="672" y="754"/>
         </scene>
-        <!--Matches View Controller-->
+        <!--Matches!-->
         <scene sceneID="Bfq-4A-phT">
             <objects>
                 <viewController id="K34-bR-aVn" customClass="MatchesViewController" sceneMemberID="viewController">
@@ -477,7 +475,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="AKK-iF-QLA" detailTextLabel="G3Q-dt-bR3" style="IBUITableViewCellStyleSubtitle" id="t7S-Gq-8Y0">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="AKK-iF-QLA" detailTextLabel="G3Q-dt-bR3" imageView="x3s-OK-V0y" style="IBUITableViewCellStyleSubtitle" id="t7S-Gq-8Y0">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t7S-Gq-8Y0" id="oQ0-VI-Tpq">
@@ -495,6 +493,9 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Chat_user.png" id="x3s-OK-V0y">
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -503,7 +504,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Wxg-Va-W5P"/>
+                    <navigationItem key="navigationItem" title="Matches!" id="Wxg-Va-W5P"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="tableView" destination="t3H-q0-RpC" id="Lwf-DY-Z6X"/>
@@ -523,10 +524,11 @@
                         <viewControllerLayoutGuide type="bottom" id="41f-Pm-AAb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Xfc-Vz-IMU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" id="6Zg-xg-Kwu"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
@@ -557,11 +559,14 @@
     <resources>
         <image name="AgeIcon.png" width="19" height="19"/>
         <image name="ChatIcon.png" width="22" height="22"/>
+        <image name="Chat_user.png" width="58" height="55"/>
         <image name="DislikeIcon.png" width="38" height="37"/>
+        <image name="EditProfile.png" width="253" height="32"/>
         <image name="Facebook.png" width="200" height="25"/>
         <image name="InfoIcon.png" width="39" height="37"/>
         <image name="LikeIcon.png" width="55" height="37"/>
         <image name="Logo.png" width="134" height="94"/>
+        <image name="Logout.png" width="253" height="32"/>
         <image name="SettingIcon.png" width="22" height="20"/>
         <image name="StatusIcon.png" width="19" height="18"/>
         <image name="UserImage.png" width="320" height="221"/>
