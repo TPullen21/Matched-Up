@@ -116,6 +116,7 @@
 #pragma mark - IBActions
 
 - (IBAction)chatBarButtonItemPressed:(UIBarButtonItem *)sender {
+    [self performSegueWithIdentifier:@"homeToMatchesSegue" sender:nil];
 }
 
 - (IBAction)settingsBarButtonItemPressed:(UIBarButtonItem *)sender {
