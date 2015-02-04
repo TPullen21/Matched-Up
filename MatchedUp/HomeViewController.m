@@ -10,8 +10,9 @@
 #import "TestUser.h"
 #import "ProfileViewController.h"
 #import "MatchViewController.h"
+#import "TransistionAnimator.h"
 
-@interface HomeViewController () <MatchViewControllerDelegate, ProfileViewControllerDelegate>
+@interface HomeViewController () <MatchViewControllerDelegate, ProfileViewControllerDelegate, UIViewControllerTransitioningDelegate>
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *chatBarButtonItem;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *settingsBarButtonItem;
@@ -324,7 +325,16 @@
             [chatroom setObject:[PFUser currentUser] forKey:kChatRoomUser1Key];
             [chatroom setObject:self.photo[kPhotoUserKey] forKey:kChatRoomUser2Key];
             [chatroom saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                [self performSegueWithIdentifier:@"homeToMatchSegue" sender:nil];
+//                [self performSegueWithIdentifier:@"homeToMatchSegue" sender:nil];
+                
+                UIStoryboard *myStoryBoard = self.storyboard;
+                MatchViewController *matchViewController = [myStoryBoard instantiateViewControllerWithIdentifier:@"matchVC"];
+                matchViewController.view.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:.75];
+                matchViewController.transitioningDelegate = self;
+                matchViewController.matchedUserImage = self.photoImageView.image;
+                matchViewController.delegate = self;
+                matchViewController.modalPresentationStyle = UIModalPresentationCustom;
+                [self presentViewController:matchViewController animated:YES completion:nil];
             }];
         }
     }];
@@ -349,6 +359,19 @@
     [self.navigationController popViewControllerAnimated:NO];
     [self checkDislike];
     
+}
+
+#pragma mark - UIViewControllerTransitionDelegate
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    TransistionAnimator *animator = [[TransistionAnimator alloc] init];
+    animator.presenting = YES;
+    return animator;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    TransistionAnimator *animator = [[TransistionAnimator alloc] init];
+    return animator;
 }
 
 /*
